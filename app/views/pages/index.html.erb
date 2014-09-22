@@ -1,0 +1,15 @@
+<div class='posts'>
+  <% if notice %>
+      <p id="notice" xmlns=""><%= notice %></p>
+  <% end %>
+
+  <% @posts.each do |post| %>
+      <div class='post'>
+        <p class='post_title'><%= post.title %></p>
+
+        <p class='post_detail'><%= "#{post.updated_at.strftime('%d/%m/%Y')}" %></p>
+
+        <p class='post_content'><%= post.body %></p>
+      </div>
+  <% end %>
+</div>

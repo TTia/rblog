@@ -2,47 +2,28 @@
 <html>
 <head>
   <title>Rblog</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
-
-<%= yield %>
-
-</body>
-</html>
-<!--
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Rblog</title>
-  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
-<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-<%= csrf_meta_tags %>
-</head>
 <body class='<%= controller.controller_name %>'>
-<div id="header">
-  <%= image_tag('rails.png') %>
-  <h1><%= @page_title || 'RBlog' %></h1>
+    <div id="header">
+      <%= image_tag('rails.png') %>
+      <h1><%= @page_title || 'RBlog' %></h1>
 
-  <div class="banner_link">
-    <%= link_to 'RBlog', controller: 'blog' %>
-  </div>
-  <div class="banner_link">
-    <%= link_to 'Abstract', controller: 'blog' %>
-  </div>
-  <div class="banner_link">
-    <%= link_to 'Autore', controller: 'blog' %>
-  </div>
-</div>
-<div id="columns">
-  <%= yield %>
-</div>
-
-<div id="footer">
-  <p>© 2014 - Mattia</p>
-</div>
+      <div class="banner_link">
+        <%= link_to 'RBlog', controller: 'pages', method: 'index' %>
+      </div>
+      <div class="banner_link">
+        <%= link_to 'Abstract', controller: 'pages', method: 'abstract' %>
+      </div>
+      <div class="banner_link">
+        <%= link_to 'Autore', controller: 'pages', method: 'author' %>
+      </div>
+    </div>
+    <%= yield %>
+    <div id="footer">
+      <p>© 2014 - Mattia</p>
+    </div>
 </body>
 </html>
--->

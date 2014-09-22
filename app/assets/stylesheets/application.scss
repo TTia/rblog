@@ -1,0 +1,96 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+body {
+  background-color: #f1f1f1;
+  margin: 0;
+  font-family: sans-serif;
+
+  #header {
+	background: #2E2F30;
+	min-height: 5em;
+	overflow: auto;
+	border-top: 5px solid #e84444;
+	img {
+	  float: left;
+	  width: 5em;
+	  height: 5em;
+	  margin-left: 10%;
+	}
+	.banner_link {
+	  height: 5em;
+	  float: left;
+	  a {
+		color: white;
+		text-decoration: none;
+		font-size: large;
+
+		text-align: center;
+		vertical-align: middle;
+		line-height: 4em;
+		margin-left: 1em;
+		margin-right: 1em;
+	  }
+	}
+	.banner_link:hover {
+	  background-color: #8c2828;
+	}
+	h1 {
+	  float: left;
+	  font-size: xx-large;
+	  color: white;
+	  margin-right: 2em;
+	  margin-left: 1em;
+	}
+	#notice {
+	  color: 000 !important;
+	  padding: 1em;
+	  margin-bottom: 2em;
+	  background-color: #f0f0f0;
+	  font: bold;
+	}
+  }
+
+  #columns {
+	clear: both;
+	margin-top: 1em;
+	margin-bottom: 1em;
+
+	#main {
+	  margin-left: 10%;
+	  margin-right: 20%;
+	}
+  }
+
+  #footer {
+	background: #2E2F30;
+	position: absolute;
+	/*
+	  bottom: 0;
+	  */
+	height: 2em;
+	width: 100%;
+	border-bottom: 5px solid #e84444;
+	p {
+	  color: white;
+	  font-size: small;
+	  vertical-align: middle;
+	  line-height: 1em;
+	  margin-right: 1em;
+	  float: right;
+	}
+  }
+}

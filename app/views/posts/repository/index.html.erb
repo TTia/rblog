@@ -1,0 +1,22 @@
+<div id='new_post'>
+  <%= link_to 'Crea un nuovo post', new_post_path %>
+</div>
+<% if notice %>
+    <p id="notice" xmlns=""><%= notice %></p>
+<% end %>
+
+<% @posts.each do |post| %>
+    <div class='post'>
+      <h1 class='post_title'><%= post.title %></h1>
+
+      <p class='post_detail'><%= "#{post.updated_at.strftime("%d/%m/%Y")}" %></p>
+
+      <p class='post_content'><%= truncate(post.content, length: 50, omission: ' (...)', separator: ' ') { link_to '->', post } %></p>
+
+      <div class='post_CRUD'>
+        <%= link_to 'Show', post %>
+        <%= link_to 'Edit', edit_post_path(post) %>
+        <%= link_to 'Destroy', post, method: :delete, data: {confirm: 'Are you sure?'} %>
+      </div>
+    </div>
+<% end %>
