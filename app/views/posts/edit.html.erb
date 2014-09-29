@@ -1,4 +1,2 @@
-<div id='form'>
-  <h1 id='form_title'>Editing post</h1>
-  <%= render 'form' %>
-</div>
+<% @form_title = "Aggiorna #{@post.title}" %>
+<%= render 'form' %>

@@ -27,28 +27,34 @@
 	}
 	.post_content {
 	}
-	.form_actions {
+	.post_actions {
 	  margin-bottom: .5em;
 	  float: right;
 	}
   }
 }
 
-#form {
+form {
   margin: 1em 15%;
+  .form_actions{
+	float: left;
+	margin-top: 1em;
+  }
   #form_title {
 	text-decoration: none;
-	font-size: 24px;
-	margin-bottom: 12px;
-	line-height: 35px;
+	font-size: x-large;
 	font-family: Montserrat, sans-serif;
 	color: #34302d;
+	float: left;
+	margin-left: 1em;
+  }
+  #title_field{
+	clear: both;
+	margin-bottom: 1em;
+	margin-top: 1em;
   }
   .field{
 	margin-bottom: 1em;
 	margin-top: 1em;
-  }
-  .form_actions{
-	margin-bottom: .5em;
   }
 }
