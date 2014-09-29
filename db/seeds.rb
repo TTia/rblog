@@ -7,7 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 Post.create(title: 'Story Alpha', body: 'Come Tesista
 Vorrei scegliere il corretto stack di framework
-Per implementare gli acceptance testing in Rails')
+Per diventare un fanatico dell\'ATDD in RoR')
 
 Post.create(title: 'Hello {Rails, Cucumber, Capybara, PhantomJS, Poltergeist}!',
 body: 'Feature: Hello {Rails, Cucumber, Capybara, PhantomJS, Poltergeist}!

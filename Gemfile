@@ -3,11 +3,16 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.0'
-# Use cucumber for ATDD
-gem 'cucumber-rails'
-gem 'database_cleaner'
-gem 'capybara'
-gem 'poltergeist'
+# ATDD
+group :development, :test do
+	gem 'cucumber-rails'
+	gem 'rspec-rails'
+	gem 'capybara'
+
+	gem 'poltergeist'
+
+	gem 'database_cleaner'
+end
 
 # Use postgres as the database for Active Record
 gem 'pg'

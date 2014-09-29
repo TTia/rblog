@@ -5,8 +5,9 @@
 # files.
 
 require 'cucumber/rails'
-require "capybara"
-require "capybara/cucumber"
+require 'capybara'
+require 'capybara/cucumber'
+require 'capybara/rspec'
 require 'capybara/poltergeist'
 
 # Capybara defaults to CSS3 selectors rather than XPath.

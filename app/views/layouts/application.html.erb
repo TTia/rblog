@@ -7,23 +7,25 @@
   <%= csrf_meta_tags %>
 </head>
 <body class='<%= controller.controller_name %>'>
-    <div id="header">
-      <%= image_tag('rails.png') %>
-      <h1><%= @page_title || 'RBlog' %></h1>
-
-      <div class="banner_link">
-        <%= link_to 'RBlog', controller: 'pages', method: 'index' %>
-      </div>
-      <div class="banner_link">
-        <%= link_to 'Abstract', controller: 'pages', method: 'abstract' %>
-      </div>
-      <div class="banner_link">
-        <%= link_to 'Autore', controller: 'pages', method: 'author' %>
-      </div>
+<div id="header">
+  <%= logo_image_link %>
+  <div id="header_title">
+    <%= link_to 'RBlog', :root %>
+  </div>
+  <div id="banner_links">
+    <div class="banner_link" id="abstract_link">
+      <%= link_to 'Abstract', :abstract %>
     </div>
-    <%= yield %>
-    <div id="footer">
-      <p>© 2014 - Mattia</p>
+    <div class="banner_link" id="author_link">
+      <%= link_to 'Autore', :author %>
     </div>
+  </div>
+</div>
+<div id="content">
+  <%= yield %>
+</div>
+<div id="footer">
+  <p>© 2014 - Mattia</p>
+</div>
 </body>
 </html>

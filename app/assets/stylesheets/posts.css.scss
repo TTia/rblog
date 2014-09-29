@@ -1,43 +1,54 @@
 // Place all the styles related to the Posts controller here.
 // They will automatically be included in application.scss.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-/*
-#new_post {
-  margin-left: 10%;
-  margin-right: 20%;
-  width: 70%;
-  //border-bottom: 1px solid #BBBBBB;
-  text-align: center;
+
+.posts {
+  #new_post_action {
+	text-align: center;
+  }
+  .post {
+	margin: 1em 15%;
+	border-bottom: 1px solid #BBBBBB;
+
+	overflow: auto;
+	font-family: sans-serif;
+	.post_title {
+	  a {
+		text-decoration: none;
+		font-size: 	24px;
+		margin-bottom: 12px;
+		line-height: 35px;
+		font-family: Montserrat, sans-serif;
+		color: #34302d;
+	  }
+	}
+	.post_detail {
+	  color: #666666;
+	}
+	.post_content {
+	}
+	.form_actions {
+	  margin-bottom: .5em;
+	  float: right;
+	}
+  }
 }
 
-.post {
-  margin-left: 10%;
-  margin-right: 20%;
-  border-bottom: 1px solid #BBBBBB;
-  //padding-top: 1em;
-  //padding-bottom: 1em;
-
-  overflow: auto;
-  min-height: 5em;
-  font-family: sans-serif;
-  h3 {
-	font-size: 120%;
-	margin-top: 0;
+#form {
+  margin: 1em 15%;
+  #form_title {
+	text-decoration: none;
+	font-size: 24px;
+	margin-bottom: 12px;
+	line-height: 35px;
+	font-family: Montserrat, sans-serif;
+	color: #34302d;
   }
-  p {
-	//margin-top: 0.5em;
+  .field{
+	margin-bottom: 1em;
+	margin-top: 1em;
   }
-  .post_detail {
-	font-size: x-small;
-	color: #666666;
-  }
-  .post_content {
-  }
-  .post_CRUD {
+  .form_actions{
 	margin-bottom: .5em;
-	float: right;
-  }
-  form {
   }
 }
-*/

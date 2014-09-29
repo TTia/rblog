@@ -1,21 +1,22 @@
+@cap1
 Feature: Hello ATDD!
-  Come studente
-  Vorrei che l'applicazione rblog fosse visitabile
   Per poter documentare la mia tesi
+  Come Laureando
+  Vorrei che RBlog fosse visitabile
 
   Scenario: Visita alla pagina iniziale
-    Given Il sito è online
-    When Navigo verso la home page
-    Then Esiste un collegamento alla pagina dell'autore
-    And Esiste un collegamento alla pagina dell'abstract
+    Given apro RBlog
+    Then posso visitare la pagina dell'autore
+    And posso visitare la pagina dell'abstract
 
-  Scenario Outline: Visita alle pagine statiche
-    Given Il sito è online
-    When Navigo verso "<url>"
-    Then Il titolo "<title>" è presente
-    And Esiste un collegamento alla home page
+  Scenario Outline: Visita alle pagine statiche:
+  la pagina dell'autore
+  e la pagina relativa all'abstract della tesi
+    Given apro RBlog
+    When navigo verso "<nome della pagina>"
+    Then la pagina è intitolata "<nome della pagina>"
+    And posso tornare alla pagina iniziale
   Examples:
-    | url            | title    |
-    | /              | RBlog    |
-    | /author.html   | Autore   |
-    | /abstract.html | Abstract |
+    | nome della pagina |
+    | Autore            |
+    | Abstract          |

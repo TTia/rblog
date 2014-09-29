@@ -13,83 +13,104 @@
  *= require_tree .
  *= require_self
  */
+@font-face {
+  font-family: 'Montserrat';
+  src: asset_url('Montserrat-Regular.ttf') format('truetype'),
+  font_url('Montserrat-Bold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'VarelaRound';
+  src: asset_url('VarelaRound-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  font-family: VarelaRound;
+  color: #2E2F30;
+}
 
 body {
   background-color: #f1f1f1;
   margin: 0;
   font-family: sans-serif;
+  height: 100%;
 
   #header {
-	background: #2E2F30;
+	//background: #2E2F30;
+	background-color: #2E2F30;
 	min-height: 5em;
 	overflow: auto;
 	border-top: 5px solid #e84444;
+
 	img {
 	  float: left;
 	  width: 5em;
 	  height: 5em;
-	  margin-left: 10%;
+	  margin-left: 15%;
 	}
-	.banner_link {
-	  height: 5em;
+	#header_title {
 	  float: left;
-	  a {
-		color: white;
-		text-decoration: none;
-		font-size: large;
-
-		text-align: center;
-		vertical-align: middle;
-		line-height: 4em;
-		margin-left: 1em;
-		margin-right: 1em;
-	  }
-	}
-	.banner_link:hover {
-	  background-color: #8c2828;
-	}
-	h1 {
-	  float: left;
-	  font-size: xx-large;
-	  color: white;
 	  margin-right: 2em;
 	  margin-left: 1em;
+	  height: 5em;
+	  vertical-align: middle;
+	  text-align: center;
+	  a{
+		color: white;
+		font-family: Montserrat,sans-serif;
+		font-size: 32px;
+		text-decoration: none;
+
+		line-height: 2em;
+	  }
 	}
-	#notice {
-	  color: 000 !important;
-	  padding: 1em;
-	  margin-bottom: 2em;
-	  background-color: #f0f0f0;
-	  font: bold;
+	#banner_links {
+	  .banner_link {
+		height: 5em;
+		float: right;
+		a {
+		  color: white;
+		  text-decoration: none;
+		  font-size: large;
+
+		  line-height: 4em;
+		  margin-left: 1em;
+		  margin-right: 1em;
+		}
+		a:hover {
+		  background-color: #8c2828;
+		  //background: #8c2828;
+		}
+	  }
+	  .banner_link:hover {
+		background-color: #8c2828;
+		//background: #8c2828;
+	  }
+	  margin-right: 15%;
 	}
   }
 
-  #columns {
+  #content {
 	clear: both;
-	margin-top: 1em;
-	margin-bottom: 1em;
-
-	#main {
-	  margin-left: 10%;
-	  margin-right: 20%;
-	}
+	//margin: 1em 5em;
   }
 
   #footer {
+	clear: both;
 	background: #2E2F30;
-	position: absolute;
-	/*
-	  bottom: 0;
-	  */
-	height: 2em;
+	height: 5em;
+
 	width: 100%;
 	border-bottom: 5px solid #e84444;
 	p {
 	  color: white;
 	  font-size: small;
-	  vertical-align: middle;
-	  line-height: 1em;
-	  margin-right: 1em;
+
+	  margin-right: 5em;
 	  float: right;
 	}
   }

@@ -1,6 +1,11 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  # Add the fonts path
+	config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
+	# Precompile additional assets
+	config.assets.precompile += %w( .svg .eot .woff .ttf )
+
   # Code is not reloaded between requests.
   config.cache_classes = true
 
@@ -58,7 +63,7 @@ Rails.application.configure do
   # config.action_controller.asset_host = "http://assets.example.com"
 
   # Precompile additional assets.
-  # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
+  # application.js, __a.css, and all non-JS/CSS in app/assets folder are already added.
   # config.assets.precompile += %w( search.js )
 
   # Ignore bad email addresses and do not raise email delivery errors.
