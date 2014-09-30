@@ -3,7 +3,8 @@ Feature: Navigazione dei post
   Vorrei che nel blog fossero presenti dei post
   Per potermi informare
 
-  Background: Given apro RBlog
+  Background:
+    Given apro RBlog
 
   Scenario: Visualizzazione dei post su RBlog
   Scenario: Lettura di un singolo post

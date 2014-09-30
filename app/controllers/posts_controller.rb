@@ -30,10 +30,10 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
     @post = Post.new(post_params)
-
+    notice_message = "Il post '#{@post.title}' è stato creato con successo."
     respond_to do |format|
       if @post.save
-        format.html { redirect_to @post, notice: 'Post was successfully created.' }
+        format.html { redirect_to @post, notice: notice_message }
         format.json { render :show, status: :created, location: @post }
       else
         format.html { render :new }
@@ -47,7 +47,8 @@ class PostsController < ApplicationController
   def update
     respond_to do |format|
       if @post.update(post_params)
-        format.html { redirect_to @post, notice: 'Post was successfully updated.' }
+	      notice_message = "Il post '#{@post.title}' è stato aggiornato con successo."
+        format.html { redirect_to @post, notice: notice_message }
         format.json { render :show, status: :ok, location: @post }
       else
         format.html { render :edit }
@@ -59,9 +60,10 @@ class PostsController < ApplicationController
   # DELETE /posts/1
   # DELETE /posts/1.json
   def destroy
+		notice_message = "Il post '#{@post.title}' è stato cancellato con successo."
     @post.destroy
     respond_to do |format|
-      format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
+      format.html { redirect_to posts_url, notice: notice_message}
       format.json { head :no_content }
     end
   end

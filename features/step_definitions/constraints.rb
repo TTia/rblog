@@ -63,3 +63,23 @@ Given(/^sono presenti dei collegamenti raffigurati tramite immagini$/) do
 	linked_pictures = steps_helper.linked_pictures page
 	expect(linked_pictures.length).not_to eq(0)
 end
+
+Given(/^apro la pagina per la creazione di un nuovo post$/) do
+	page.first('.new_post_link').click
+end
+
+Given(/^il post "([^"]*)" non è leggibile su RBlog$/) do |post_title|
+	expect do
+		steps_helper.post_div_by_title(page, post_title)
+	end.to raise_error Capybara::ElementNotFound
+end
+
+Given(/^il post "([^"]*)" esiste$/) do |post_title|
+	step 'apro la pagina per la creazione di un nuovo post'
+	step "inserisco \"#{post_title}\" come titolo"
+	step 'inserisco del testo riempitivo come contenuto'
+	step 'salvo il post'
+	step "il post \"#{post_title}\" è stato creato con successo"
+	step "il post \"#{post_title}\" è leggibile su RBlog"
+	step 'apro RBlog'
+end

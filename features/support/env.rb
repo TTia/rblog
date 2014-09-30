@@ -66,7 +66,8 @@ Capybara.register_driver :poltergeist do |app|
 			:js_errors => true,
 			:timeout => 120,
 			:debug => false,
-			:phantomjs_options => ['--load-images=no', '--disk-cache=false'],
+			#:phantomjs_options => ['--load-images=no', '--disk-cache=false'],
+			:phantomjs_options => ['--disk-cache=false'],
 			:inspector => true,
 	}
 	Capybara::Poltergeist::Driver.new(app, options)

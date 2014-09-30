@@ -38,5 +38,14 @@ module StepsDefinition
 			page.all(:xpath, '//a[@href]/img')
 		end
 
+		def take_screenshot(page)
+			page.save_screenshot('screenshot.png')
+		end
+
+		def post_div_by_title(page, post_title)
+			xpath_query = "//div[@class = 'post'][p/a[text() = '#{post_title}']]"
+			page.find(:xpath, xpath_query)
+		end
+
 	end
 end

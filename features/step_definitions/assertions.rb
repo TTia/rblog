@@ -51,3 +51,22 @@ Then(/^ogni collegamento ha una descrizione testuale$/) do
 		expect(alt_value).not_to eq('')
 	end
 end
+
+Then(/^il post "([^"]*)" è leggibile su RBlog$/) do |post_title|
+	step 'apro RBlog'
+	expect do
+		post_div = steps_helper.post_div_by_title page, post_title
+		expect(post_div).not_to be_nil
+	end.not_to raise_error
+end
+
+Then(/^il post "([^"]*)" è stato (?:creato|modificato|cancellato) con successo$/) do |post_title|
+	steps_helper.take_screenshot page
+	expect(page.has_css?('#notice')).to be_truthy
+	expect(page.has_content?(post_title)).to be_truthy
+end
+
+Then(/^compare l'errore "([^"]*)"$/) do |error_message|
+	expect(page.has_css?('.error_explanation')).to be_truthy
+	expect(page.has_content?(error_message)).to be_truthy
+end
