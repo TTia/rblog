@@ -7,12 +7,12 @@ end
 
 Given(/^è presente l'intestazione$/) do
 	@header = page.find(steps_helper.header_id)
-	@header.should_not nil?
+	expect(@header).not_to be_nil
 end
 
 Given(/^è presente il pié di pagina$/) do
 	@footer = page.find(steps_helper.footer_id)
-	@footer.should_not nil?
+	expect(@footer).not_to be_nil
 end
 
 Given(/^l'intestazione ha un colore di sfondo$/) do
@@ -24,27 +24,42 @@ Given(/^il pié di pagina ha un colore di sfondo$/) do
 end
 
 Given(/^l'intestazione permette la navigazione$/) do
+	@links = @header.all('a')
+	expect(@links.length).to eq(4)
+
+	@textual_header_link_divs = @header.all('.banner_link')
+	expect(@textual_header_link_divs.length).to eq(steps_helper.textual_header_links.length)
+=begin
+	#riscritto
 	@banner_link_divs = @header.all('.banner_link')
-	@banner_link_divs.length.should eq(3)
+	@banner_link_divs.length.should eq(steps_helper.header_links.length)
 
 	@links = []
 	@banner_link_divs.each do |banner_link_div|
 		@links << banner_link_div.find('a')
 	end
+=end
+
 end
 
-Given(/^l'intestazione contiene il titolo della pagina$/) do
-	@page_title = @header.find('h1').text;
+Given(/^la pagina ha un titolo$/) do
+	@page_title = page.title
 end
 
 Given(/^i collegamenti non hanno sfondo$/) do
 	# todo
 	#header_rgb_background = steps_helper.background_color(steps_helper.header_id, page)
 
-	@banner_link_divs.each do |banner_link_div|
+	@textual_header_link_divs.each do |banner_link_div|
 		id = banner_link_div[:id]
-		steps_helper.background_color("##{id}", page).should eq('rgba(0, 0, 0, 0)')
+		background_color = steps_helper.background_color("##{id}", page)
+		expect(background_color).to eq('rgba(0, 0, 0, 0)')
 		# todo
 		#steps_helper.background_color("##{id}", page).should eq(header_rgb_background)
 	end
+end
+
+Given(/^sono presenti dei collegamenti raffigurati tramite immagini$/) do
+	linked_pictures = steps_helper.linked_pictures page
+	expect(linked_pictures.length).not_to eq(0)
 end

@@ -30,5 +30,13 @@ module StepsDefinition
 			page.evaluate_script(jscript)
 		end
 
+		def textual_header_links
+			[:author, :abstract]
+		end
+
+		def linked_pictures(page)
+			page.all(:xpath, '//a[@href]/img')
+		end
+
 	end
 end

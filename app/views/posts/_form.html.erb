@@ -2,27 +2,28 @@
     <div class="form_actions">
       <%= image_submit_tag('save_48.png', :alt => 'Crea un nuovo post') %>
     </div>
-    <p id="form_title"><%=@form_title%></p>
+    <p id="form_title"><%= @form_title %></p>
     <% if @post.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
-
-          <ul>
-            <% @post.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-            <% end %>
-          </ul>
+        <div class="error_explanation">
+          <p><%= if @post.errors.count > 1
+                 then
+                   "#{@post.errors.count} errori hanno"
+                 else
+                   'Un errore ha'
+                 end %> impedito il salvataggio.</p>
         </div>
     <% end %>
 
     <div id="title_field">
       <%= f.label :title, 'Titolo' %>
-      <br>
+      <%= render :partial => 'error_explanation',
+                 :locals => {:errors => @post.errors[:title]} %>
       <%= f.text_field :title, :size => 50 %>
     </div>
     <div class="field">
-      <%= f.label :body, 'Post'%>
-      <br>
-      <%= f.text_area :body, :cols=>'75', :rows=>'20' %>
+      <%= f.label :body, 'Post' %>
+      <%= render :partial => 'error_explanation',
+                 :locals => {:errors => @post.errors[:body]} %>
+      <%= f.text_area :body, :cols => '75', :rows => '20' %>
     </div>
 <% end %>

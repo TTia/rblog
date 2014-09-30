@@ -19,27 +19,35 @@ end
 
 Then(/^l'intestazione è posizionata all'inizio$/) do
 	header = page.find(:xpath, 'descendant::body/*[1]')
-	@header.should eql?(header)
+	expect(@header).to eq(header)
 end
 
 Then(/^il piè di pagina è posizionato alla fine$/) do
 	footer = page.find(:xpath, 'descendant::body/*[last()]')
-	@footer.should eql?(footer)
+	expect(@footer).to eq(footer)
 end
 
 Then(/^intestazione e pié di pagina hanno lo stesso colore di sfondo$/) do
-	@header_background.should eq(@footer_background)
+	expect(@header_background).to eq(@footer_background)
 end
 
 Then(/^posso navigare verso "([^"]*)"$/) do |page_name|
 	link_names = @links.map { |link|	link.text }
-	link_names.should include(page_name)
+	expect(link_names).to include(page_name)
 end
 
 Then(/^il titolo della pagina è uguale al (.*)$/) do |page_name|
-	page_name.should eq(@page_title)
+	expect(page_name).to eq(@page_title)
 end
 
 Then(/^lo sfondo del collegamento cambia$/) do
-	@pre_color.should_not eq(@color)
+	expect(@pre_color).not_to eq(@color)
+end
+
+Then(/^ogni collegamento ha una descrizione testuale$/) do
+	steps_helper.linked_pictures(page).each do |linked_picture|
+		alt_value = linked_picture[:alt].lstrip
+		expect(alt_value).not_to be_nil
+		expect(alt_value).not_to eq('')
+	end
 end

@@ -1,0 +1,1 @@
+#ricerca con barra a comparsa

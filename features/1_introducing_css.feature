@@ -34,8 +34,9 @@ Feature: Introducendo il (S)CSS
 
   Scenario Outline: l'intestazione contiene il titolo della pagina
     Given navigo verso "<nome della pagina>"
-    Given è presente l'intestazione
-    Given l'intestazione contiene il titolo della pagina
+    #Given è presente l'intestazione
+    #Given l'intestazione contiene il titolo della pagina
+    Given la pagina ha un titolo
     Then il titolo della pagina è uguale al <nome della pagina>
   Examples:
     | nome della pagina |
@@ -49,3 +50,8 @@ Feature: Introducendo il (S)CSS
     And i collegamenti non hanno sfondo
     When il cursore si sposta sui collegamenti
     Then lo sfondo del collegamento cambia
+
+  Scenario: i collegamenti raffigurati tramite immagini devono
+            anche avere una descrizione testuale
+  Given sono presenti dei collegamenti raffigurati tramite immagini
+  Then ogni collegamento ha una descrizione testuale

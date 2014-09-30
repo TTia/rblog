@@ -9,7 +9,7 @@ When(/^navigo verso "([^"]*)"$/) do |page_link|
 end
 
 When(/^il cursore si sposta sui collegamenti$/) do
-	@banner_link_divs.each do |banner_link_div|
+	@textual_header_link_divs.each do |banner_link_div|
 		id = banner_link_div[:id]
 		@header.find_by_id(id).hover
 		@color = steps_helper.background_color("##{id}", page)

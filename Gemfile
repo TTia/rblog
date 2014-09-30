@@ -5,7 +5,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.1.0'
 # ATDD
 group :development, :test do
-	gem 'cucumber-rails'
+	gem 'cucumber-rails', :require => false
 	gem 'rspec-rails'
 	gem 'capybara'
 

@@ -40,11 +40,11 @@ class PostsControllerTest < ActionController::TestCase
   test 'should not create post due to length requirements' do
 		short_post = {
 				title: 't' * (Post::min_title_length-1),
-				content: 'c' * (Post::min_content_length-1)
+				content: 'c' * (Post::min_body_length-1)
 		}
 		long_post = {
 				title: 't' * (Post::max_title_length+1),
-		    content: 'c' * (Post::min_content_length+1)
+		    content: 'c' * (Post::min_body_length+1)
 		}
 		assert_no_difference('Post.count') do
 		  post :create, post: short_post
@@ -57,7 +57,7 @@ class PostsControllerTest < ActionController::TestCase
   test 'should create post - border line length requirements' do
 	  border_line_post = {
 			  title: 't'*Post::min_title_length,
-	      content: 'c'*Post::min_content_length
+	      content: 'c'*Post::min_body_length
 	  }
 	  assert_difference('Post.count') do
 		  post :create, post: border_line_post
