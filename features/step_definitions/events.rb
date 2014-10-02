@@ -29,7 +29,13 @@ When(/^inserisco del testo riempitivo come contenuto$/) do
 consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
 Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes,
 nascetur ridiculus mus. Donec quam felis, ultricies nec,
-pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.'
+pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.
+Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.
+In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.
+Nullam dictum felis eu pede mollis pretium. Integer tincidunt.
+Cras dapibus. Vivamus elementum semper nisi.
+Aenean vulputate eleifend tellus.
+Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.'
 	step "inserisco \"#{lorem_ipsum_content}\" come contenuto"
 end
 
@@ -53,4 +59,10 @@ When(/^modifico il post "([^"]*)"$/) do |post_title|
 	within(post_div) do
 		find('.edit_post_button').click
 	end
+end
+
+When(/^espando il post "([^"]*)"$/) do |post_title|
+	post_div = steps_helper.post_div_by_title(page, post_title)
+
+	post_div.find('.read_more_link').click
 end

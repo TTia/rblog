@@ -1,7 +1,10 @@
 <div class='posts'>
   <% if notice %>
-      <p id="notice" xmlns=""><%= notice %></p>
+      <div id="notice">
+        <p xmlns=""><%= bulb_image_tag %><%= notice %></p>
+      </div>
   <% end %>
+
   <div id='new_post_action' class="post">
     <p class='post_title'>
       <%= new_post_image_link %>
@@ -19,13 +22,17 @@
 
         <p class='post_detail'>
           <% post_details(post).each do |detail| %>
-            <%= detail %>
+              <%= detail %>
           <% end %>
         </p>
 
         <p class='post_content'>
-          <%= post.body %>
-        </p>
+          <%= truncate(post.body, :length => 500, :separator => ' ', :omission => '...') %>
+
+        <p/>
+        <% if post.body.length > 500 %>
+            <%= link_to 'Leggi il resto', post, :class => 'read_more_link' %>
+        <% end %>
 
         <div class='post_actions'>
           <%= edit_post_image_link post %>

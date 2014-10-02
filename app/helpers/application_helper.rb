@@ -16,11 +16,16 @@ module ApplicationHelper
 		remove_message = "Sei sicuro di voler cancellare '#{post.title}'?"
 		link_to image_tag, post,
 		        method: :delete, data: {confirm: remove_message},
-						class: 'remove_post_button'
+		        class: 'remove_post_button'
 	end
 
 	def logo_image_link(size = '96x96', border = 0, alt = 'RBlog')
 		image_tag = image_tag('rails.png', :border => border, size: size, :title => alt)
 		link_to image_tag, :root
+	end
+
+	def bulb_image_tag(border = 0, size = '32x32',
+	                   alt = 'Operazione completata')
+		image_tag('bulb.png', :border => border, size: size, :title => alt)
 	end
 end

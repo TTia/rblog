@@ -1,6 +1,8 @@
 <div class='posts'>
   <% if notice %>
-      <p id="notice" xmlns=""><%= notice %></p>
+      <div id="notice">
+        <p xmlns=""><%= bulb_image_tag %><%= notice %></p>
+      </div>
   <% end %>
 
   <div class='post'>

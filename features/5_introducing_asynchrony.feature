@@ -14,9 +14,9 @@ Feature: Autenticazione su RBlog
     Given il post "Lorem Ipsum" esiste
     Given il post "Lorem Ipsum - 2" esiste
     When ricerco "Lorem Ipsum - 2"
-    Then il post "Lorem Ipsum - 2" è leggibile su RBlog
-    Then il post "Lorem Ipsum" non è leggibile su RBlog
+    Then il post "Lorem Ipsum - 2" è leggibile
+    Then il post "Lorem Ipsum" non è leggibile
 
   Scenario: Ricerca di un post non esistente
     When ricerco "Lorem Ipsum"
-    Then il post "Lorem Ipsum" è leggibile su RBlog
+    Then il post "Lorem Ipsum" è leggibile

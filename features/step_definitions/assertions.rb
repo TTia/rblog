@@ -32,7 +32,7 @@ Then(/^intestazione e pié di pagina hanno lo stesso colore di sfondo$/) do
 end
 
 Then(/^posso navigare verso "([^"]*)"$/) do |page_name|
-	link_names = @links.map { |link|	link.text }
+	link_names = @links.map { |link| link.text }
 	expect(link_names).to include(page_name)
 end
 
@@ -52,12 +52,16 @@ Then(/^ogni collegamento ha una descrizione testuale$/) do
 	end
 end
 
-Then(/^il post "([^"]*)" è leggibile su RBlog$/) do |post_title|
-	step 'apro RBlog'
+Then(/^il post "([^"]*)" è leggibile$/) do |post_title|
 	expect do
 		post_div = steps_helper.post_div_by_title page, post_title
 		expect(post_div).not_to be_nil
 	end.not_to raise_error
+end
+
+Then(/^il post "([^"]*)" è leggibile su RBlog$/) do |post_title|
+	step 'apro RBlog'
+	step "il post \"#{post_title}\" è leggibile"
 end
 
 Then(/^il post "([^"]*)" è stato (?:creato|modificato|cancellato) con successo$/) do |post_title|
@@ -69,4 +73,57 @@ end
 Then(/^compare l'errore "([^"]*)"$/) do |error_message|
 	expect(page.has_css?('.error_explanation')).to be_truthy
 	expect(page.has_content?(error_message)).to be_truthy
+end
+
+Then(/^ogni post ha un titolo$/) do
+	steps_helper.post_divs(page).each do |post_div|
+		post_div.has_css?('.post_title')
+	end
+end
+
+Then(/^ogni post ha del contenuto$/) do
+	steps_helper.post_divs(page).each do |post_div|
+		post_div.has_css?('.post_content')
+	end
+end
+
+And(/^ogni post ha dei dettagli$/) do
+	steps_helper.post_divs(page).each do |post_div|
+		post_div.has_css?('.post_detail')
+	end
+end
+
+Then(/^il post "([^"]*)" non è leggibile$/) do |post_title|
+	expect do
+		steps_helper.post_div_by_title(page, post_title)
+	end.to raise_error Capybara::ElementNotFound
+end
+
+Then(/^il contenuto del post "([^"]*)" è un'anteprima dell'intero post$/) do |post_title|
+	post_div = steps_helper.post_div_by_title(page, post_title)
+	content = post_div.find('.post_content').text
+	expect(content.length).to be <= 505
+
+	expect(post_div.has_css?('.read_more_link')).to be_truthy
+end
+
+
+Then(/^il contenuto del post "([^"]*)" rappresenta l'intero post$/) do |post_title|
+	post_div = steps_helper.post_div_by_title(page, post_title)
+	content = post_div.find('.post_content').text
+	expect(content.length).to be > 500
+
+	expect(post_div.has_css?('.read_more_link')).to be_falsy
+end
+
+Then(/^il titolo del post è "([^"]*)"$/) do |post_title|
+	expect do
+		steps_helper.post_div_by_title(page, post_title)
+	end.not_to raise_error
+end
+
+Then(/^il contenuto del titolo include "([^"]*)"$/) do |partial_content|
+	post_div = steps_helper.post_divs(page)[0]
+	content = post_div.find('.post_content').text
+	expect(content).to include(partial_content)
 end

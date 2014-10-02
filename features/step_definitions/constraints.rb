@@ -69,9 +69,8 @@ Given(/^apro la pagina per la creazione di un nuovo post$/) do
 end
 
 Given(/^il post "([^"]*)" non è leggibile su RBlog$/) do |post_title|
-	expect do
-		steps_helper.post_div_by_title(page, post_title)
-	end.to raise_error Capybara::ElementNotFound
+	step 'apro RBlog'
+	step "il post \"#{post_title} non è leggibile\""
 end
 
 Given(/^il post "([^"]*)" esiste$/) do |post_title|
@@ -81,5 +80,4 @@ Given(/^il post "([^"]*)" esiste$/) do |post_title|
 	step 'salvo il post'
 	step "il post \"#{post_title}\" è stato creato con successo"
 	step "il post \"#{post_title}\" è leggibile su RBlog"
-	step 'apro RBlog'
 end

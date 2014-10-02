@@ -52,5 +52,11 @@ module StepsDefinition
 			page.all(:xpath, xpath_query)
 		end
 
+		def post_divs(page)
+			#xpath_query = "//div[@class = 'post']"
+			#page.all(:xpath, xpath_query)
+			page.all('.post')
+		end
+
 	end
 end

@@ -3,6 +3,13 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .posts {
+  #notice {
+	margin: 1em 15%;
+	text-align: center;
+	p {
+	  color: forestgreen;
+	}
+  }
   #new_post_action {
 	text-align: center;
   }
@@ -42,12 +49,12 @@ form {
   }
   .error_explanation {
 	clear: both;
- 	p{
+	p {
 	  font-size: large;
 	  font-family: Montserrat, sans-serif;
 	  color: #8c2828;
 	}
-	li{
+	li {
 	  color: #8c2828;
 	}
   }

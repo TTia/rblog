@@ -10,8 +10,9 @@ Feature: Navigazione dei post
   @clean_up_needed
   Scenario: Visualizzazione dei post
     Given il post "Lorem Ipsum" esiste
-    And il post "Lorem Ipsum" è leggibile su RBlog
+    Then il post "Lorem Ipsum" è leggibile su RBlog
     Then ogni post ha un titolo
+    And ogni post ha dei dettagli
     And ogni post ha del contenuto
 
   @clean_up_needed
@@ -28,18 +29,6 @@ Feature: Navigazione dei post
     And il post "Lorem Ipsum" è leggibile su RBlog
     When espando il post "Lorem Ipsum"
     Then il titolo del post è "Lorem Ipsum"
-    And il contenuto del titolo inizia con "Lorem ipsum"
-    And il contenuto del titolo termina con "quis enim."
+    And il contenuto del titolo include "Lorem ipsum"
     And la pagina è intitolata "Lorem Ipsum"
     And posso tornare alla pagina iniziale
-
-  Scenario: Navigazione fra i post presenti su RBlog
-    Given il post "Lorem Ipsum" esiste
-    And il post "Lorem Ipsum" è leggibile su RBlog
-    When espando il post "Lorem Ipsum"
-    Then il titolo del post è "Lorem Ipsum"
-    And il contenuto del titolo inizia con "Lorem ipsum"
-    And il contenuto del titolo termina con "quis enim."
-    And la pagina è intitolata "Lorem Ipsum"
-    And posso tornare alla pagina iniziale
-
