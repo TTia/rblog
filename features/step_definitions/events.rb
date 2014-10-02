@@ -29,7 +29,7 @@ When(/^inserisco del testo riempitivo come contenuto$/) do
 consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
 Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes,
 nascetur ridiculus mus. Donec quam felis, ultricies nec,
-pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. '
+pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.'
 	step "inserisco \"#{lorem_ipsum_content}\" come contenuto"
 end
 

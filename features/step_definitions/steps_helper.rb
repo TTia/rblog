@@ -47,5 +47,10 @@ module StepsDefinition
 			page.find(:xpath, xpath_query)
 		end
 
+		def post_divs_matching_title(page, post_title)
+			xpath_query = "//div[@class = 'post'][p/a[contains(text(),'#{post_title}')]]"
+			page.all(:xpath, xpath_query)
+		end
+
 	end
 end

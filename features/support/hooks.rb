@@ -4,8 +4,12 @@ After('@clean_up_needed') do
 
 	return unless page.has_content?(lorem_ipsum_post_title)
 
-	lorem_ipsum_div = steps_helper.post_div_by_title(page, lorem_ipsum_post_title)
-	within(lorem_ipsum_div) do
-		find('.remove_post_button').click
+	divs = steps_helper.post_divs_matching_title(page, lorem_ipsum_post_title)
+	expect(divs.length).to be >= 1
+
+	divs.each do |div|
+		within(div) do
+			find('.remove_post_button').click
+		end
 	end
 end

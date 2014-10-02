@@ -1,7 +1,7 @@
 @cap2
 Feature: Introducendo il (S)CSS
   Per rendere l'esperienza di navigazione gradevole
-  Come visitatore
+  Come Lettore
   Vorrei che il sito esponesse una grafica omogenea
 
   Background:
@@ -34,8 +34,6 @@ Feature: Introducendo il (S)CSS
 
   Scenario Outline: l'intestazione contiene il titolo della pagina
     Given navigo verso "<nome della pagina>"
-    #Given è presente l'intestazione
-    #Given l'intestazione contiene il titolo della pagina
     Given la pagina ha un titolo
     Then il titolo della pagina è uguale al <nome della pagina>
   Examples:
