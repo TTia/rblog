@@ -19,9 +19,13 @@ module ApplicationHelper
 		        class: 'remove_post_button'
 	end
 
-	def logo_image_link(size = '96x96', border = 0, alt = 'RBlog')
+	def logo_image_link(size = '78x78', border = 0, alt = 'RBlog')
 		image_tag = image_tag('rails.png', :border => border, size: size, :title => alt)
-		link_to image_tag, :root
+		link_to image_tag, :root, :id => 'logo'
+	end
+
+	def search_image_tag(size = '32x32', border = 0, alt = 'Ricerca')
+		image_tag('search.png', :border => border, size: size, :title => alt)
 	end
 
 	def bulb_image_tag(border = 0, size = '32x32',
@@ -29,3 +33,4 @@ module ApplicationHelper
 		image_tag('bulb.png', :border => border, size: size, :title => alt)
 	end
 end
+

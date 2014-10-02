@@ -20,7 +20,7 @@ When(/^inserisco "([^"]*)" come titolo$/) do |title_value|
 	page.fill_in 'post_title', :with => title_value
 end
 
-And(/^inserisco "([^"]*)" come contenuto$/) do |content|
+When(/^inserisco "([^"]*)" come contenuto$/) do |content|
 	page.fill_in 'post_body', :with => content
 end
 

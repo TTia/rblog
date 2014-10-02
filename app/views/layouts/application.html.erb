@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title><%= @page_title || 'RBlog'%></title>
+  <title><%= @page_title || 'RBlog' %></title>
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -13,11 +13,19 @@
     <%= link_to 'RBlog', :root %>
   </div>
   <div id="banner_links">
+    <div class="banner_link" id="author_link">
+      <%= link_to 'Autore', :author %>
+    </div>
     <div class="banner_link" id="abstract_link">
       <%= link_to 'Abstract', :abstract %>
     </div>
-    <div class="banner_link" id="author_link">
-      <%= link_to 'Autore', :author %>
+    <div class="banner_link" id="search_link">
+      <form>
+        <%= image_submit_tag('search_32.png',
+                             :alt => 'Cerca fra i post',
+                             :id => 'submit') %>
+        <!--<input type="text" name="search">-->
+      </form>
     </div>
   </div>
 </div>
