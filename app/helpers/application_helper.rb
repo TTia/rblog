@@ -25,7 +25,11 @@ module ApplicationHelper
 	end
 
 	def search_image_tag(size = '32x32', border = 0, alt = 'Ricerca')
-		image_tag('search.png', :border => border, size: size, :title => alt)
+		image_tag('search.png',
+		          :border => border,
+		          :size => size,
+		          :title => alt,
+		          :id => 'search_icon')
 	end
 
 	def bulb_image_tag(border = 0, size = '32x32',

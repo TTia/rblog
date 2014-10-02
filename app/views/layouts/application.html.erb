@@ -19,13 +19,19 @@
     <div class="banner_link" id="abstract_link">
       <%= link_to 'Abstract', :abstract %>
     </div>
-    <div class="banner_link" id="search_link">
-      <form>
-        <%= image_submit_tag('search_32.png',
-                             :alt => 'Cerca fra i post',
-                             :id => 'submit') %>
-        <!--<input type="text" name="search">-->
-      </form>
+    <div class="banner_link"
+         id="search_link"
+         onmouseover='switch_search_input_text()'
+         onmouseout = 'switch_search_input_text()'>
+      <!--<form id='search_form'>-->
+      <%= form_tag(:root, method: "get") do %>
+          <input type="text"
+                 name="search"
+                 id="search_input_text"
+                 placeholder="Ricerca fra i post...">
+          <%= search_image_tag %>
+      <% end %>
+      <!--</form>-->
     </div>
   </div>
 </div>

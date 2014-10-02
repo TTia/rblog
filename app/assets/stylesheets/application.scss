@@ -89,12 +89,19 @@ body {
 		}
 		form {
 		  position: relative;
-		  top: 30%;
+		  top: 10%;
 		  //line-height: 6em;
 		  display: inline;
 
 		  margin-left: 1em;
 		  margin-right: 1em;
+		  img{
+			position: relative;
+			top: 15%;
+		  }
+		  input{
+			display: none;
+		  }
 		}
 	  }
 	  .banner_link:hover {

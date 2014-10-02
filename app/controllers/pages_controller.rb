@@ -1,7 +1,13 @@
 class PagesController < ApplicationController
   def index
 	  @page_title = 'RBlog'
-		@posts = Post.order('created_at DESC')
+	  if params[:search].present?
+		  @posts = Post
+							  .where('lower(title) like ?', "#{params[:search].downcase}%")
+							  .order('created_at DESC')
+	  else
+		  @posts = Post.all.order('created_at DESC')
+	  end
 	  render 'posts/index'
   end
 	def author
