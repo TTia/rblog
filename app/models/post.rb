@@ -1,4 +1,6 @@
 class Post < ActiveRecord::Base
+	belongs_to :author
+
 	def Post::min_title_length
 		5
 	end
@@ -22,4 +24,5 @@ class Post < ActiveRecord::Base
 	validates :body, presence: {message: 'Articolo mancante'}
 	validates :body, length: {minimum: Post::min_body_length,
 	                             too_short: "L'articolo deve essere almeno di #{Post::min_body_length} caratteri"}
+	validates :author, presence: {message: 'Autore mancante'}
 end

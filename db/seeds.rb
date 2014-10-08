@@ -5,18 +5,9 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+ttia = Author.create(email:'mattia@rblog.io', hpassword: 'password')
+
 Post.create(title: 'Story Alpha', body: 'Come Tesista
 Vorrei scegliere il corretto stack di framework
-Per diventare un fanatico dell\'ATDD in RoR')
-
-Post.create(title: 'Hello {Rails, Cucumber, Capybara, PhantomJS, Poltergeist}!',
-body: 'Feature: Hello {Rails, Cucumber, Capybara, PhantomJS, Poltergeist}!
-Come sviluppatore
-Vorrei che l\'applicazione rblog fosse visitabile
-Per poter documentare la mia tesi
-
-Scenario: Visita all\'home page
-Given Il sito è online
-When Navigo verso l\'home page
-Then La pagina è raggiungibile
-And Il titolo "RBlog" è presente')
+Per diventare un fanatico dell\'ATDD in RoR', author: ttia)
