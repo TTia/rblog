@@ -13,28 +13,23 @@
     <%= link_to 'RBlog', :root %>
   </div>
   <div id="banner_links">
+    <div class="banner_link">
+      <% if current_user %>
+          <%= link_to "#{current_user.email} - Esci", :log_out, :id => 'log_out_link' %>
+      <% else %>
+          <%= link_to 'Login', :log_in, :id => 'log_in_link' %>
+      <% end %>
+    </div>
     <div class="banner_link" id="author_link">
       <%= link_to 'Autore', :author %>
     </div>
     <div class="banner_link" id="abstract_link">
       <%= link_to 'Abstract', :abstract %>
     </div>
-    <div class="banner_link"
-         id="search_link"
-         onmouseover='switch_search_input_text()'
-         onmouseout = 'switch_search_input_text()'>
-      <!--<form id='search_form'>-->
-      <%= form_tag(:root, method: "get") do %>
-          <input type="text"
-                 name="search"
-                 id="search_input_text"
-                 placeholder="Ricerca fra i post...">
-          <%= search_image_tag %>
-      <% end %>
-      <!--</form>-->
-    </div>
+    <%= render 'layouts/search_header_form' %>
   </div>
 </div>
+
 <div id="content">
   <%= yield %>
 </div>

@@ -10,4 +10,8 @@ module PostsHelper
 		end
 		details
 	end
+
+	def author_detail(post)
+		"Scritto da #{post.author.email}"
+	end
 end

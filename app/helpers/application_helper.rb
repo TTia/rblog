@@ -36,5 +36,9 @@ module ApplicationHelper
 	                   alt = 'Operazione completata')
 		image_tag('bulb.png', :border => border, size: size, :title => alt)
 	end
+
+	def logged?
+		current_user.nil?
+	end
 end
 

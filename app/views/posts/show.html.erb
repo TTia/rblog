@@ -11,6 +11,8 @@
     </p>
 
     <p class='post_detail'>
+      <%= author_detail(@post) %>
+      </br>
       <% post_details(@post).each do |detail| %>
           <%= detail %>
       <% end %>
@@ -20,9 +22,7 @@
       <%= @post.body %>
     </p>
 
-    <div class='post_actions'>
-      <%= edit_post_image_link @post %>
-      <%= remove_post_image_link @post %>
-    </div>
+    <%= render :partial => 'logged_user_post_actions',
+               :locals => {:current_user => current_user, :post => @post} %>
   </div>
 </div>

@@ -6,7 +6,6 @@ class PostsController < ApplicationController
 	# GET /
 	# GET /:page
 	def home
-
 	end
 
 	# GET /posts
@@ -79,6 +78,25 @@ class PostsController < ApplicationController
 			format.html { redirect_to posts_url, notice: notice_message }
 			format.json { head :no_content }
 		end
+	end
+
+	# GET /posts/autocomplete_title?title=xxx
+	def autocomplete_title
+		if params[:title].present?
+			params[:title] = params[:title].downcase
+			post_titles = Post.select([:title])
+			.where('lower(title) LIKE ?', "%#{params[:title]}%")
+			.order('created_at DESC')
+			.limit(10);
+		else
+			post_titles = Post.all
+			.order('created_at DESC')
+			.limit(10);
+		end
+		result = post_titles.collect do |t|
+			{title: t.title}
+		end
+		render json: result
 	end
 
 	private

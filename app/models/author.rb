@@ -13,4 +13,14 @@ class Author < ActiveRecord::Base
 			self.hpassword = BCrypt::Engine.hash_secret(self.hpassword, self.hsalt)
 		end
 	end
+
+	def self.authenticate(email, password)
+		user = find_by_email(email)
+
+		if user && user.hpassword == BCrypt::Engine.hash_secret(password, user.hsalt)
+			user
+		else
+			nil
+		end
+	end
 end

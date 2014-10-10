@@ -1,4 +1,3 @@
-#mock scaffolding
 @cap6
 Feature: Autenticazione su RBlog
   Come Autore di RBlog
@@ -8,12 +7,11 @@ Feature: Autenticazione su RBlog
   Background:
     Given apro RBlog
 
-  @ignore
   Scenario: Possibilità di autenticarsi
     Given l'utente non è autenticato
     Then tramite l'intestazione posso autenticarmi
 
-  @ignore
+  @logout_needed
   Scenario: Autenticazione su RBlog
     Given l'utente non è autenticato
     Then tramite l'intestazione posso autenticarmi
@@ -22,20 +20,22 @@ Feature: Autenticazione su RBlog
     And tramite l'intestazione non posso autenticarmi
     And tramite l'intestazione posso disconnettermi
 
-  @ignore
   Scenario: Disconnessione da RBlog
-    Given l'utente è autenticato
-    When quando mi disconnetto
+    Given l'utente non è autenticato
+    When mi autentico come "mattia@rblog.io"
     Then tramite l'intestazione posso disconnettermi
+    When quando mi disconnetto
     And l'utente non è autenticato
 
-  @ignore
-  Scenario: Possibilità di compiere operazioni sensibili
-    Given l'utente è autenticato
-    Then apro la pagina per la creazione di un nuovo post
-
-  @ignore
-  Scenario: Impossibilità di compiere operazioni sensibili
+  @logout_needed
+  Scenario: Possibilità di compiere operazioni sensibili avendo compiuto l'accesso
     Given l'utente non è autenticato
-    Then non è visualizabile il collegamento alla pagina di creazione dei post
-    And la pagina di creazione dei post non è raggiungibile
+    When mi autentico come "mattia@rblog.io"
+    Then posso navigare verso la pagina per la creazione di un nuovo post
+
+  Scenario: Autenticazione fallita su RBlog
+    Given l'utente non è autenticato
+    Then tramite l'intestazione posso autenticarmi
+    When mi autentico come "anonymous@rblog.io"
+    Then l'utente non è autenticato
+    And compare l'errore di autenticazione "Credenziali invalide."

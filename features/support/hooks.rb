@@ -13,3 +13,9 @@ After('@clean_up_needed') do
 		end
 	end
 end
+
+After('@logout_needed') do
+	return unless page.has_link?('log_out_link')
+	logout_link = page.find_link 'log_out_link'
+	logout_link.click
+end

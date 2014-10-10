@@ -35,7 +35,7 @@ Feature: Introducendo il (S)CSS
   Scenario Outline: l'intestazione contiene il titolo della pagina
     Given navigo verso "<nome della pagina>"
     Given la pagina ha un titolo
-    Then il titolo della pagina è uguale al <nome della pagina>
+    Then il titolo della pagina è uguale a "<nome della pagina>"
   Examples:
     | nome della pagina |
     | Abstract          |

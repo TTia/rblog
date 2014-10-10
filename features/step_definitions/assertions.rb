@@ -36,7 +36,7 @@ Then(/^posso navigare verso "([^"]*)"$/) do |page_name|
 	expect(link_names).to include(page_name)
 end
 
-Then(/^il titolo della pagina è uguale al (.*)$/) do |page_name|
+Then(/^il titolo della pagina è uguale a "([^"]*)"$/) do |page_name|
 	expect(page_name).to eq(@page_title)
 end
 
@@ -126,4 +126,37 @@ Then(/^il contenuto del titolo include "([^"]*)"$/) do |partial_content|
 	post_div = steps_helper.post_divs(page)[0]
 	content = post_div.find('.post_content').text
 	expect(content).to include(partial_content)
+end
+
+Then(/^tramite l'intestazione posso autenticarmi$/) do
+	step 'è presente l\'intestazione'
+	expect(@header.has_link?('Login')).to be_truthy
+end
+
+Then(/^l'utente è autenticato$/) do
+	expect(page.has_link?('log_out_link')).to be_truthy
+	expect(page.has_link?('log_in_link')).to be_falsy
+end
+
+And(/^tramite l'intestazione non posso autenticarmi$/) do
+	step 'è presente l\'intestazione'
+	expect(@header.has_link?('log_in_link')).to be_falsy
+end
+
+And(/^tramite l'intestazione posso disconnettermi$/) do
+	step 'è presente l\'intestazione'
+	expect(@header.has_link?('log_out_link')).to be_truthy
+end
+
+Then(/^posso navigare verso la pagina per la creazione di un nuovo post$/) do
+	expect(page.all('.new_post_link').length).to be >= 0
+end
+
+Then(/^non posso navigare verso la pagina per la creazione di un nuovo post$/) do
+	expect(page.all('.new_post_link').length).to be eq(0)
+end
+
+Then(/^compare l'errore di autenticazione "([^"]*)"$/) do |error_message|
+	expect(page.has_css?('#flashnotice')).to be_truthy
+	expect(page.has_content?(error_message)).to be_truthy
 end

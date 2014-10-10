@@ -81,3 +81,8 @@ Given(/^il post "([^"]*)" esiste$/) do |post_title|
 	step "il post \"#{post_title}\" è stato creato con successo"
 	step "il post \"#{post_title}\" è leggibile su RBlog"
 end
+
+Given(/^l'utente non è autenticato$/) do
+	expect(page.has_link?('log_in_link')).to be_truthy
+	expect(page.has_link?('log_out_link')).to be_falsy
+end

@@ -17,6 +17,14 @@ module StepsDefinition
 			'Autore'
 		end
 
+		def login_page_url
+			rblog_url+'/log_in'
+		end
+
+		def logout_page_url
+			rblog_url+'/log_out'
+		end
+
 		def header_id
 			'#header'
 		end
@@ -53,9 +61,12 @@ module StepsDefinition
 		end
 
 		def post_divs(page)
-			#xpath_query = "//div[@class = 'post']"
-			#page.all(:xpath, xpath_query)
 			page.all('.post')
+		end
+
+		def encrypted_session(page)
+			cookies = page.driver.cookies
+			cookies.values[0].value
 		end
 
 	end

@@ -1,20 +1,25 @@
 Rails.application.routes.draw do
-=begin
-	#Rimosso perchè contenente routing di default ai metodi
-	get 'pages/index'
-  get 'pages/author'
-  get 'pages/abstract'
-=end
-	root 'pages#index'
+
+	root :to => 'pages#index', :as => 'root'
 	get '/author' => 'pages#author'
 	get '/abstract' => 'pages#abstract'
+
+  get '/log_in' => 'sessions#new', :as => 'log_in'
+  get '/log_out' => 'sessions#destroy', :as => 'log_out'
+
 	#Necessario mantenere la home page
 	#dinamica per ultima per
 	#evitare di nascondere le
 	#altre pagine statiche
 	get '/:page' => 'pages#index'
 
-  resources :posts
+  #get 'sign_up' => 'users#new', :as => 'sign_up'
+
+  resources :posts do
+	  get :autocomplete_title, :on => :collection
+  end
+
+	resources :sessions, :only => [:new, :create, :destroy]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require autocomplete-rails
 //= require turbolinks
 //= require_tree .
 
@@ -22,22 +23,70 @@ function switch_search_input_text() {
         search_input_text.style.display = "inline";
         //search_input_text.value = '';
     } else {
-        hide_search_input_text(search_input_text);
+        search_input_text.style.display = "none";
     }
 }
 
-/*
-function on_key_pressed(event) {
-    if (typeof event == 'undefined' && window.event) {
-        event = window.event;
-    }
-    var code = event.charCode || event.keyCode;
-    if (code == 27) {
-        hide_search_input_text(search_input_text);
-    }
-}
-*/
-
-function hide_search_input_text(search_input_text) {
-    search_input_text.style.display="none";
+function autocomplete_search() {
+    var search_input_text = document.getElementById('search_input_text');
+    var string = search_input_text.value;
+    //alert(string);
+    $("#search_input_text").autocomplete({
+        source: function (request, response) {
+            alert(string);
+            $.ajax({
+                url: "http://localhost:3000/posts/autocomplete_post_title=" + string,
+                dataType: "json",
+                success: function (data) {
+                    response($.map(data, function (item) {
+                        return {
+                            label: item.state,
+                            title: item.title
+                        };
+                    }));
+                }
+            });
+        },
+        delay: 500,
+        minLength: 2,
+        select: function (event, ui) {
+            $('#search_input_text').val(ui.item.title);
+        }
+    });
+    /*
+     $.getJSON("http://localhost:3000/posts/autocomplete_post_title?title=" + string,
+     function (result) {
+     alert(result);
+     var header_div = document.getElementById('search_input_text');
+     $.each(result, function (i, field) {
+     header_div.append(field + " ");
+     });
+     });
+     */
+    //alert(string);
+    /*
+     $("#search_input_text").autocomplete({
+     source: function( request, response ) {
+     alert(string);
+     $.ajax({
+     url: "http://localhost:3000/posts/autocomplete_post_title="+string,
+     dataType: "json",
+     success: function(data) {
+     response($.map(data, function(item) {
+     return {
+     label: item.state,
+     title: item.title
+     };
+     }));
+     }
+     });
+     },
+     delay: 500,
+     minLength: 2,
+     select: function(event, ui) {
+     $('#search_input_text').val(ui.item.title);
+     }
+     });
+     */
+    //alert(string);
 }

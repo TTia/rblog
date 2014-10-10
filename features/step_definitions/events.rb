@@ -66,3 +66,23 @@ When(/^espando il post "([^"]*)"$/) do |post_title|
 
 	post_div.find('.read_more_link').click
 end
+
+When(/^mi autentico come "([^"]*)"$/) do |email|
+	pre_login_encrypted_session = steps_helper.encrypted_session(page)
+
+	password = 'password'
+	visit steps_helper.login_page_url
+
+	visit steps_helper.login_page_url
+	page.fill_in 'email', :with => email
+	page.fill_in 'hpassword', :with => password
+
+	click_button 'login_button'
+	post_login_encrypted_session = steps_helper.encrypted_session(page)
+	expect(pre_login_encrypted_session).not_to eq(post_login_encrypted_session)
+end
+
+When(/^quando mi disconnetto$/) do
+	logout_link = page.find_link 'log_out_link'
+	logout_link.click
+end

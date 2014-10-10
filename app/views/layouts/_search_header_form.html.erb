@@ -1,0 +1,10 @@
+<div class="banner_link"
+     id="search_link"
+     onmouseover='switch_search_input_text()'
+     onmouseout='switch_search_input_text()'>
+  <%= form_tag(:root, method: 'get') do %>
+      <input type="text" placeholder="Ricerca fra i post..."
+             id="search_input_text" onkeyup="autocomplete_search()">
+  <% end %>
+  <%= search_image_tag %>
+</div>
