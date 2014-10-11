@@ -9,7 +9,9 @@
 
 </head>
 <body class='<%= controller.controller_name %>'>
-<div id="header">
+<div id="header"
+     onmouseover='switch_search_input_text()'
+     onmouseout='switch_search_input_text()'>
   <%= logo_image_link %>
   <div id="header_title">
     <%= link_to 'RBlog', :root %>

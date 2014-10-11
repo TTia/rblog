@@ -11,8 +11,11 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery_ujs
+// require jquery_ujs
 //= require jquery-ui
+//= require jquery-ui/menu
+//= require jquery-ui/progressbar
+//= require jquery-ui/selectmenu
 //= require turbolinks
 //= require_tree .
 
@@ -26,7 +29,8 @@ $(document).ready(function () {
         $("#search_input_text").autocomplete({
             source: function (request, response) {
                 $.ajax({
-                    url: "/posts/autocomplete_title?title=" + $("#search_input_text").val(),
+                    url: "/posts/autocomplete_title",
+                    data: {title: $("#search_input_text").val()},
                     success: function (data) {
                         console.log("Ok");
                         console.log(data);
@@ -39,11 +43,11 @@ $(document).ready(function () {
             },
             minLength: 2,
             focus: function (event, ui) {
-                event.preventDefault();
+                //event.preventDefault();
                 $("#search_input_text").val(ui.item.value);
             },
             select: function (event, ui) {
-                event.preventDefault();
+                //event.preventDefault();
                 $("#search_input_text").val(ui.item.value);
             }
         });
@@ -54,8 +58,8 @@ function switch_search_input_text() {
     var search_input_text = document.getElementById('search_input_text');
 
     if (search_input_text.style.display != "inline") {
-        search_input_text.style.display = "inline";
+        //search_input_text.style.display = "inline";
     } else {
-        search_input_text.style.display = "none";
+        //search_input_text.style.display = "none";
     }
 }

@@ -1,9 +1,9 @@
 class PagesController < ApplicationController
 	def index
 		@page_title = 'RBlog'
-		if params[:title].present?
+		if params[:search].present?
 			@posts = Post
-			.where('lower(title) like ?', "#{params[:title].downcase}%")
+			.where('title like ?', "#{params[:search]}%")
 			.order('created_at DESC')
 		else
 			@posts = Post.all.order('created_at DESC')

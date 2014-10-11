@@ -17,7 +17,7 @@ class PostsController < ApplicationController
 			.where('title like ?', "#{params[:search]}%")
 			.order('created_at DESC')
 		else
-			@posts = Post.all
+			@posts = Post.all.order('created_at DESC')
 		end
 	end
 
@@ -98,12 +98,6 @@ class PostsController < ApplicationController
 			result << p.title
 		end
 		render json: result
-=begin
-		result = post_titles.collect do |t|
-			{title: t.title}
-		end
-		render json: result
-=end
 	end
 
 	private
