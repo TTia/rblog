@@ -12,81 +12,50 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require autocomplete-rails
+//= require jquery-ui
 //= require turbolinks
 //= require_tree .
+
+function cb(data) {
+    console.log(data);
+    return data;
+}
+
+$(document).ready(function () {
+    if ($("#search_input_text").length) {
+        $("#search_input_text").autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                    url: "/posts/autocomplete_title?title=" + $("#search_input_text").val(),
+                    success: function (data) {
+                        console.log("Ok");
+                        console.log(data);
+                        response(data);
+                    },
+                    failure: function () {
+                        console.log("Failure");
+                    }
+                })
+            },
+            minLength: 2,
+            focus: function (event, ui) {
+                event.preventDefault();
+                $("#search_input_text").val(ui.item.value);
+            },
+            select: function (event, ui) {
+                event.preventDefault();
+                $("#search_input_text").val(ui.item.value);
+            }
+        });
+    }
+});
 
 function switch_search_input_text() {
     var search_input_text = document.getElementById('search_input_text');
 
     if (search_input_text.style.display != "inline") {
         search_input_text.style.display = "inline";
-        //search_input_text.value = '';
     } else {
         search_input_text.style.display = "none";
     }
-}
-
-function autocomplete_search() {
-    var search_input_text = document.getElementById('search_input_text');
-    var string = search_input_text.value;
-    //alert(string);
-    $("#search_input_text").autocomplete({
-        source: function (request, response) {
-            alert(string);
-            $.ajax({
-                url: "http://localhost:3000/posts/autocomplete_post_title=" + string,
-                dataType: "json",
-                success: function (data) {
-                    response($.map(data, function (item) {
-                        return {
-                            label: item.state,
-                            title: item.title
-                        };
-                    }));
-                }
-            });
-        },
-        delay: 500,
-        minLength: 2,
-        select: function (event, ui) {
-            $('#search_input_text').val(ui.item.title);
-        }
-    });
-    /*
-     $.getJSON("http://localhost:3000/posts/autocomplete_post_title?title=" + string,
-     function (result) {
-     alert(result);
-     var header_div = document.getElementById('search_input_text');
-     $.each(result, function (i, field) {
-     header_div.append(field + " ");
-     });
-     });
-     */
-    //alert(string);
-    /*
-     $("#search_input_text").autocomplete({
-     source: function( request, response ) {
-     alert(string);
-     $.ajax({
-     url: "http://localhost:3000/posts/autocomplete_post_title="+string,
-     dataType: "json",
-     success: function(data) {
-     response($.map(data, function(item) {
-     return {
-     label: item.state,
-     title: item.title
-     };
-     }));
-     }
-     });
-     },
-     delay: 500,
-     minLength: 2,
-     select: function(event, ui) {
-     $('#search_input_text').val(ui.item.title);
-     }
-     });
-     */
-    //alert(string);
 }

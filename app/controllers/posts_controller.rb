@@ -93,10 +93,17 @@ class PostsController < ApplicationController
 			.order('created_at DESC')
 			.limit(10);
 		end
+		result = []
+		post_titles.each do |p|
+			result << p.title
+		end
+		render json: result
+=begin
 		result = post_titles.collect do |t|
 			{title: t.title}
 		end
 		render json: result
+=end
 	end
 
 	private
