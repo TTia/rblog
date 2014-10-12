@@ -14,17 +14,16 @@
 // require jquery_ujs
 //= require jquery-ui
 //= require jquery-ui/menu
-//= require jquery-ui/progressbar
 //= require jquery-ui/selectmenu
 //= require turbolinks
 //= require_tree .
 
-function cb(data) {
-    console.log(data);
-    return data;
-}
+$(window).bind('page:change', autocomplete)
 
-$(document).ready(function () {
+$(document).ready(autocomplete);
+
+function autocomplete() {
+    console.log("Ready");
     if ($("#search_input_text").length) {
         $("#search_input_text").autocomplete({
             source: function (request, response) {
@@ -52,14 +51,20 @@ $(document).ready(function () {
             }
         });
     }
-});
+}
 
-function switch_search_input_text() {
-    var search_input_text = document.getElementById('search_input_text');
+function switch_easter_egg() {
+    var woodstock = $('#woodstock');
+    if (!woodstock.length) {
+        var img = document.createElement("img");
+        img.src = "/assets/woodstock.png";
+        img.id = "woodstock";
+        img.width = "48";
+        img.height = "48";
 
-    if (search_input_text.style.display != "inline") {
-        //search_input_text.style.display = "inline";
-    } else {
-        //search_input_text.style.display = "none";
+        document.getElementById("footer").appendChild(img);
+    }else{
+        woodstock.remove();
     }
+
 }

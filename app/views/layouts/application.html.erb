@@ -9,9 +9,7 @@
 
 </head>
 <body class='<%= controller.controller_name %>'>
-<div id="header"
-     onmouseover='switch_search_input_text()'
-     onmouseout='switch_search_input_text()'>
+<div id="header">
   <%= logo_image_link %>
   <div id="header_title">
     <%= link_to 'RBlog', :root %>
@@ -37,7 +35,7 @@
 <div id="content">
   <%= yield %>
 </div>
-<div id="footer">
+<div id="footer" onclick='switch_easter_egg()'>
   <p>© 2014 - Mattia</p>
 </div>
 </body>

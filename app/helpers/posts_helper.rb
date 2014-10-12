@@ -2,6 +2,7 @@ module PostsHelper
 	def format_date_time(date_time)
 		date_time.strftime('%d/%m/%Y @ %I:%M%p')
 	end
+
 	def post_details(post)
 		details = []
 		details << "Creato il #{format_date_time post.created_at}"

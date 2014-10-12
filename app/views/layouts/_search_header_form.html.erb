@@ -3,6 +3,8 @@
   <%= form_tag(:root, method: 'get') do %>
       <input type="text" placeholder="Ricerca fra i post..."
              id="search_input_text" name="search">
+      <%= image_submit_tag('search_32.png',
+                           :alt => 'Ricerca',
+                           :id => 'search_icon') %>
   <% end %>
-  <%= search_image_tag %>
 </div>

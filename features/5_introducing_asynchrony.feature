@@ -4,6 +4,8 @@ Feature: Autenticazione su RBlog
   Vorrei poter ricercare i post su RBlog
   Per poter navigare fra i contenuti più velocemente
 
+  Scenario: EasterEgg
+
   Scenario: Barra di ricerca
 
   Scenario: Ricerca di un post esistente

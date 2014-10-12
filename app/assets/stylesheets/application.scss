@@ -99,12 +99,9 @@ body {
 
 		  margin-left: 1em;
 		  margin-right: 1em;
-		  img {
+		  #search_icon {
 			position: relative;
 			top: 15%;
-		  }
-		  input {
-			//display: none;
 		  }
 		}
 	  }
@@ -126,14 +123,19 @@ body {
 	height: 5em;
 
 	border-bottom: 5px solid #e84444;
-	p {
+	p{
 	  position: relative;
-	  top: 60%;
+	  top: 40%;
 
 	  color: white;
 	  font-size: small;
 
 	  margin-right: 15%;
+	  float: right;
+	}
+	#woodstock {
+	  position: relative;
+	  top: 30%;
 	  float: right;
 	}
   }
