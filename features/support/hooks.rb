@@ -23,6 +23,7 @@ end
 def clear_all_ipsums(page)
 	lorem_ipsum_post_title = 'Lorem Ipsum'
 	steps_helper = StepsDefinition::StepsHelper.new
+	visit steps_helper.rblog_url
 
 	return unless page.has_content?(lorem_ipsum_post_title)
 
@@ -31,7 +32,6 @@ def clear_all_ipsums(page)
 
 	divs.each do |div|
 		within(div) do
-			steps_helper.take_screenshot page
 			find('.remove_post_button').click
 		end
 	end

@@ -65,7 +65,6 @@ Then(/^il post "([^"]*)" è leggibile su RBlog$/) do |post_title|
 end
 
 Then(/^il post "([^"]*)" è stato (?:creato|modificato|cancellato) con successo$/) do |post_title|
-	steps_helper.take_screenshot page
 	expect(page.has_css?('#notice')).to be_truthy
 	expect(page.has_content?(post_title)).to be_truthy
 end
@@ -166,5 +165,15 @@ Then(/^è presente il logo$/) do
 	step 'è presente il pié di pagina'
 	expect(@footer.has_css?('img')).to be_truthy
 	expect(@footer.has_css?('#woodstock')).to be_truthy
-	steps_helper.take_screenshot page
+end
+
+Then(/^viene proposto il post "([^"]*)"$/) do |hint|
+	ui_menu_items = page.all(:xpath, "//li[@class = 'ui-menu-item'][text() = \"#{hint}\"]")
+	expect(ui_menu_items.length).to be == 1
+end
+
+Then(/^non è proposto alcun post$/) do
+	expect do
+		page.find(:xpath, "//li[@class = 'ui-menu-item']")
+	end.to raise_error
 end

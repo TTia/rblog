@@ -79,5 +79,21 @@ module StepsDefinition
 			logout_link.click
 		end
 
+		def finished_all_ajax_requests?(page)
+			page.document.synchronize do
+				page.find('#ui-id-1')
+			end
+		end
+
+		def wait_for_ajax(page)
+			begin
+				Timeout.timeout(Capybara.default_wait_time) do
+					loop until finished_all_ajax_requests?(page)
+				end
+			rescue Timeout::Error
+			end
+			yield if block_given?
+		end
+
 	end
 end

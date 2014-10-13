@@ -1,5 +1,7 @@
 #Capybara prende quanto eseguito sulla console di js e lo riporta
+#I tag non sono molto bdd
 @cap5
+@clear_and_logout
 Feature: Ricerca fra i post
   Come Lettore
   Vorrei poter ricercare i post su RBlog
@@ -9,15 +11,18 @@ Feature: Ricerca fra i post
     Given apro RBlog
     Given mi autentico come "mattia@rblog.io"
 
-  @clean_up_needed
-  @logout_needed
   Scenario: Autocompletamento della ricerca
     Given nell'intestazione è presente la barra di ricerca
     Given il post "Lorem Ipsum" esiste
+    When inserisco il testo "Lorem" da ricercare
+    Then viene proposto il post "Lorem Ipsum"
+    When inserisco il testo "lor" da ricercare
+    Then viene proposto il post "Lorem Ipsum"
+    When inserisco il testo "xyz" da ricercare
+    Then non è proposto alcun post
+    When inserisco il testo "L" da ricercare
+    Then non è proposto alcun post
 
-  @clean_up_needed
-  @logout_needed
-  @ignore
   Scenario: Ricerca di un post esistente
     Given nell'intestazione è presente la barra di ricerca
     Given il post "Lorem Ipsum" esiste
@@ -26,9 +31,6 @@ Feature: Ricerca fra i post
     When ricerco "lo"
     Then il post "Lorem Ipsum" è leggibile
 
-  @clean_up_needed
-  @logout_needed
-  @ignore
   Scenario: Ricerca di un post non esistente
     Given nell'intestazione è presente la barra di ricerca
     Given il post "Lorem Ipsum" esiste

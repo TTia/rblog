@@ -73,11 +73,9 @@ When(/^mi autentico come "([^"]*)"$/) do |email|
 	visit steps_helper.login_page_url
 
 	page.fill_in 'email', :with => email
-	page.fill_in 'hpassword', :with => 	'password'
-	steps_helper.take_screenshot page
+	page.fill_in 'hpassword', :with => 'password'
 
 	page.find('#login_button').click
-	steps_helper.take_screenshot page
 	post_login_encrypted_session = steps_helper.encrypted_session(page)
 	expect(pre_login_encrypted_session).not_to eq(post_login_encrypted_session)
 end
@@ -90,4 +88,30 @@ end
 When(/^clicco sull'area del pié di pagina$/) do
 	step 'è presente il pié di pagina'
 	@footer.click
+end
+
+When(/^inserisco il testo "([^"]*)" da ricercare$/) do |searched_text|
+	page.fill_in 'search', :with => searched_text
+	search_input = page.find('#search_input_text')
+	search_input.trigger(:focus)
+	#search_input.trigger(:keydown)
+	page.execute_script %Q{ $('#search_input_text').trigger('keydown') }
+	steps_helper.wait_for_ajax page
+end
+
+When(/^ricerco "([^"]*)"$/) do |searched_text|
+	step "inserisco il testo \"#{searched_text}\" da ricercare"
+	steps_helper.wait_for_ajax page do
+		regexp = Regexp.new(Regexp.escape(searched_text), 'i')
+		if page.has_css?('.ui-menu-item', :text => regexp)
+
+			post_hint = page.find(:xpath, "//li[@class = 'ui-menu-item']")
+			expect(post_hint.text).to match(%r{#{searched_text}}i)
+
+			post_hint.trigger(:mouseenter)
+			post_hint.click
+		end
+
+		find('#search_icon').click
+	end
 end
