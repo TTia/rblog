@@ -1,4 +1,5 @@
 @cap4
+@clear_and_logout
 Feature: Navigazione dei post
   Come Lettore
   Vorrei che nel blog fossero presenti dei post
@@ -6,8 +7,8 @@ Feature: Navigazione dei post
 
   Background:
     Given apro RBlog
+    Given mi autentico come "mattia@rblog.io"
 
-  @clean_up_needed
   Scenario: Visualizzazione dei post
     Given il post "Lorem Ipsum" esiste
     Then il post "Lorem Ipsum" è leggibile su RBlog
@@ -15,7 +16,6 @@ Feature: Navigazione dei post
     And ogni post ha dei dettagli
     And ogni post ha del contenuto
 
-  @clean_up_needed
   Scenario: Espansione dell'anteprima di un post
     Given il post "Lorem Ipsum" esiste
     And il post "Lorem Ipsum" è leggibile su RBlog
@@ -23,7 +23,6 @@ Feature: Navigazione dei post
     When espando il post "Lorem Ipsum"
     Then il contenuto del post "Lorem Ipsum" rappresenta l'intero post
 
-  @clean_up_needed
   Scenario: Lettura di un post
     Given il post "Lorem Ipsum" esiste
     And il post "Lorem Ipsum" è leggibile su RBlog

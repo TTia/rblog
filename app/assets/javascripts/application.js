@@ -11,7 +11,7 @@
 // about supported directives.
 //
 //= require jquery
-// require jquery_ujs
+//= require jquery_ujs
 //= require jquery-ui
 //= require jquery-ui/menu
 //= require jquery-ui/selectmenu
@@ -23,7 +23,6 @@ $(window).bind('page:change', autocomplete)
 $(document).ready(autocomplete);
 
 function autocomplete() {
-    console.log("Ready");
     if ($("#search_input_text").length) {
         $("#search_input_text").autocomplete({
             source: function (request, response) {

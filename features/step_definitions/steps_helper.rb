@@ -69,5 +69,15 @@ module StepsDefinition
 			cookies.values[0].value
 		end
 
+		def login(page)
+			logout_link = page.find('#log_out_link')
+			logout_link.click
+		end
+
+		def logout(page)
+			logout_link = page.find('#log_out_link')
+			logout_link.click
+		end
+
 	end
 end

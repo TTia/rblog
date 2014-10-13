@@ -23,8 +23,8 @@ Then(/^l'intestazione è posizionata all'inizio$/) do
 end
 
 Then(/^il piè di pagina è posizionato alla fine$/) do
-	footer = page.find(:xpath, 'descendant::body/*[last()]')
-	expect(@footer).to eq(footer)
+	footer = page.find(:xpath, 'descendant::body/div[last()]')
+	expect(@footer).to be == footer
 end
 
 Then(/^intestazione e pié di pagina hanno lo stesso colore di sfondo$/) do
@@ -159,4 +159,12 @@ end
 Then(/^compare l'errore di autenticazione "([^"]*)"$/) do |error_message|
 	expect(page.has_css?('#flashnotice')).to be_truthy
 	expect(page.has_content?(error_message)).to be_truthy
+end
+
+
+Then(/^è presente il logo$/) do
+	step 'è presente il pié di pagina'
+	expect(@footer.has_css?('img')).to be_truthy
+	expect(@footer.has_css?('#woodstock')).to be_truthy
+	steps_helper.take_screenshot page
 end

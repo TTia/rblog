@@ -70,14 +70,14 @@ end
 When(/^mi autentico come "([^"]*)"$/) do |email|
 	pre_login_encrypted_session = steps_helper.encrypted_session(page)
 
-	password = 'password'
 	visit steps_helper.login_page_url
 
-	visit steps_helper.login_page_url
 	page.fill_in 'email', :with => email
-	page.fill_in 'hpassword', :with => password
+	page.fill_in 'hpassword', :with => 	'password'
+	steps_helper.take_screenshot page
 
-	click_button 'login_button'
+	page.find('#login_button').click
+	steps_helper.take_screenshot page
 	post_login_encrypted_session = steps_helper.encrypted_session(page)
 	expect(pre_login_encrypted_session).not_to eq(post_login_encrypted_session)
 end
@@ -85,4 +85,9 @@ end
 When(/^quando mi disconnetto$/) do
 	logout_link = page.find_link 'log_out_link'
 	logout_link.click
+end
+
+When(/^clicco sull'area del pié di pagina$/) do
+	step 'è presente il pié di pagina'
+	@footer.click
 end

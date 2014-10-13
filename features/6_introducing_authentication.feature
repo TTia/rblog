@@ -11,7 +11,7 @@ Feature: Autenticazione su RBlog
     Given l'utente non è autenticato
     Then tramite l'intestazione posso autenticarmi
 
-  @logout_needed
+  @logout
   Scenario: Autenticazione su RBlog
     Given l'utente non è autenticato
     Then tramite l'intestazione posso autenticarmi
@@ -27,7 +27,7 @@ Feature: Autenticazione su RBlog
     When quando mi disconnetto
     And l'utente non è autenticato
 
-  @logout_needed
+  @logout
   Scenario: Possibilità di compiere operazioni sensibili avendo compiuto l'accesso
     Given l'utente non è autenticato
     When mi autentico come "mattia@rblog.io"

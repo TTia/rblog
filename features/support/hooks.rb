@@ -1,4 +1,26 @@
-After('@clean_up_needed') do
+=begin
+Before('@login') do
+	if page.has_link?('#log_out_link')
+		steps_helper = StepsDefinition::StepsHelper.new
+		steps_helper.logout page
+	end
+end
+=end
+
+After('@clear') do
+	clear_all_ipsums(page)
+end
+
+After('@logout') do
+	logout(page)
+end
+
+After('@clear_and_logout') do
+	clear_all_ipsums(page)
+	logout(page)
+end
+
+def clear_all_ipsums(page)
 	lorem_ipsum_post_title = 'Lorem Ipsum'
 	steps_helper = StepsDefinition::StepsHelper.new
 
@@ -9,13 +31,13 @@ After('@clean_up_needed') do
 
 	divs.each do |div|
 		within(div) do
+			steps_helper.take_screenshot page
 			find('.remove_post_button').click
 		end
 	end
 end
 
-After('@logout_needed') do
-	return unless page.has_link?('log_out_link')
-	logout_link = page.find_link 'log_out_link'
-	logout_link.click
+def logout(page)
+	steps_helper = StepsDefinition::StepsHelper.new
+	steps_helper.logout page
 end

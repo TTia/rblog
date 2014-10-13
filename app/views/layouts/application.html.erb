@@ -15,7 +15,7 @@
     <%= link_to 'RBlog', :root %>
   </div>
   <div id="banner_links">
-    <div class="banner_link">
+    <div class="banner_link" id="login_link">
       <% if current_user %>
           <%= link_to "#{current_user.email} - Esci", :log_out, :id => 'log_out_link' %>
       <% else %>
