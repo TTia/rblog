@@ -7,3 +7,5 @@ Feature: S
     Then l'utente è autenticato - sessione
     When resetto la sessione di testing
     Then l'utente non è autenticato - sessione
+
+  Scenario: Uso contemporaneo di RBlog

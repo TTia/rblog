@@ -1,22 +1,21 @@
+# language: it
 @cap1
-Feature: Hello ATDD!
-  Per poter documentare la mia tesi
-  Come Laureando
-  Vorrei che RBlog fosse visitabile
+Funzionalità: Hello RBlog!
+  Per leggere i post e visitare il blog
+  Come Lettore
+  Vorrei che RBlog permettesse la navigazione
 
   Scenario: Visita alla pagina iniziale
-    Given apro RBlog
-    Then posso visitare la pagina dell'autore
-    And posso visitare la pagina dell'abstract
+    Dato apro RBlog
+    Allora posso visitare la pagina dell'autore
+    E posso visitare la pagina dell'abstract
 
-  Scenario Outline: Visita alle pagine statiche:
-  la pagina dell'autore
-  e la pagina relativa all'abstract della tesi
-    Given apro RBlog
-    When navigo verso "<nome della pagina>"
-    Then la pagina è intitolata "<nome della pagina>"
-    And posso tornare alla pagina iniziale
-  Examples:
+  Schema dello scenario: Visita alla pagina dell'autore e alla pagina dell'abstract
+    Dato apro RBlog
+    Quando navigo verso "<nome della pagina>"
+    Allora la pagina è intitolata "<nome della pagina>"
+    E posso tornare alla pagina iniziale
+  Esempi:
     | nome della pagina |
     | Autore            |
     | Abstract          |

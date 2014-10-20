@@ -1,12 +1,3 @@
-=begin
-Before('@login') do
-	if page.has_link?('#log_out_link')
-		steps_helper = StepsDefinition::StepsHelper.new
-		steps_helper.logout page
-	end
-end
-=end
-
 After('@clear') do
 	clear_all_ipsums(page)
 end
