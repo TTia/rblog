@@ -18,7 +18,7 @@
 //= require turbolinks
 //= require_tree .
 
-$(window).bind('page:change', autocomplete)
+$(window).bind('page:change', autocomplete);
 
 $(document).ready(autocomplete);
 
@@ -65,5 +65,4 @@ function switch_easter_egg() {
     }else{
         woodstock.remove();
     }
-
 }

@@ -4,8 +4,8 @@ When(/^navigo verso la home page$/) do
 	find_link(steps_helper.home_page_name).click
 end
 
-When(/^navigo verso "([^"]*)"$/) do |page_link|
-	find_link(page_link).click
+When(/^navigo verso "([^"]*)"$/) do |page_name|
+	find_link(page_name).click
 end
 
 When(/^il cursore si sposta sui collegamenti$/) do

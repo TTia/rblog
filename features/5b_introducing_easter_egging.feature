@@ -1,13 +1,14 @@
+# language: it
 @cap5
-Feature: Easter Egging
+Funzionalità: Easter Egging
   Come Sviluppatore
   Vorrei che nel blog fosse presente un mio logo
   Per firmare il mio lavoro
 
-  Background:
+  Contesto:
     Given apro RBlog
 
   Scenario: EasterEgg
-    Given non è presente il logo nell'intestazione
-    When clicco sull'area del pié di pagina
-    Then è presente il logo
+    Dato non è presente il logo nell'intestazione
+    Quando clicco sull'area del pié di pagina
+    Allora è presente il logo

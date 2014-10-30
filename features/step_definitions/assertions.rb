@@ -2,19 +2,19 @@ require_relative 'steps_helper.rb'
 steps_helper = StepsDefinition::StepsHelper.new
 
 Then(/^la pagina è intitolata "([^"]*)"$/) do |title_value|
-	page.has_title? title_value
+	expect(page.title).to eq(title_value)
 end
 
 Then(/^posso tornare alla pagina iniziale$/) do
-	find_link('RBlog').visible?
+	expect(find_link('RBlog').visible?).to be_truthy
 end
 
 Then(/^posso visitare la pagina dell'autore$/) do
-	find_link('Autore').visible?
+	expect(find_link('Autore').visible?).to be_truthy
 end
 
 Then(/^posso visitare la pagina dell'abstract$/) do
-	find_link('Abstract').visible?
+	expect(find_link('Abstract').visible?).to be_truthy
 end
 
 Then(/^l'intestazione è posizionata all'inizio$/) do

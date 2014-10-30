@@ -1,33 +1,34 @@
+# language: it
 @cap4
 @clear_and_logout
-Feature: Navigazione dei post
+Funzionalità: Navigazione dei post
   Come Lettore
   Vorrei che nel blog fossero presenti dei post
   Per potermi informare
 
-  Background:
-    Given apro RBlog
-    Given mi autentico come "mattia@rblog.io"
+  Contesto:
+    Dato apro RBlog
+    Dato mi autentico come "mattia@rblog.io"
 
   Scenario: Visualizzazione dei post
-    Given il post "Lorem Ipsum" esiste
-    Then il post "Lorem Ipsum" è leggibile su RBlog
-    Then ogni post ha un titolo
-    And ogni post ha dei dettagli
-    And ogni post ha del contenuto
+    Dato il post "Lorem Ipsum" esiste
+    Allora il post "Lorem Ipsum" è leggibile su RBlog
+    Allora ogni post ha un titolo
+    E ogni post ha dei dettagli
+    E ogni post ha del contenuto
 
   Scenario: Espansione dell'anteprima di un post
-    Given il post "Lorem Ipsum" esiste
-    And il post "Lorem Ipsum" è leggibile su RBlog
-    Then il contenuto del post "Lorem Ipsum" è un'anteprima dell'intero post
-    When espando il post "Lorem Ipsum"
-    Then il contenuto del post "Lorem Ipsum" rappresenta l'intero post
+    Dato il post "Lorem Ipsum" esiste
+    E il post "Lorem Ipsum" è leggibile su RBlog
+    Allora il contenuto del post "Lorem Ipsum" è un'anteprima dell'intero post
+    Quando espando il post "Lorem Ipsum"
+    Allora il contenuto del post "Lorem Ipsum" rappresenta l'intero post
 
   Scenario: Lettura di un post
-    Given il post "Lorem Ipsum" esiste
-    And il post "Lorem Ipsum" è leggibile su RBlog
-    When espando il post "Lorem Ipsum"
-    Then il titolo del post è "Lorem Ipsum"
-    And il contenuto del titolo include "Lorem ipsum"
-    And la pagina è intitolata "Lorem Ipsum"
-    And posso tornare alla pagina iniziale
+    Dato il post "Lorem Ipsum" esiste
+    E il post "Lorem Ipsum" è leggibile su RBlog
+    Quando espando il post "Lorem Ipsum"
+    Allora il titolo del post è "Lorem Ipsum"
+    E il contenuto del titolo include "Lorem ipsum"
+    E la pagina è intitolata "Lorem Ipsum"
+    E posso tornare alla pagina iniziale

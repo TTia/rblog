@@ -2,7 +2,7 @@ steps_helper = StepsDefinition::StepsHelper.new
 
 Given(/^apro RBlog$/) do
 	visit steps_helper.rblog_url
-	page.status_code == 200
+	expect(page.status_code).to be == 200
 end
 
 Given(/^è presente l'intestazione$/) do
@@ -36,7 +36,6 @@ Given(/^la pagina ha un titolo$/) do
 end
 
 Given(/^i collegamenti non hanno sfondo$/) do
-	# todo
 	#header_rgb_background = steps_helper.background_color(steps_helper.header_id, page)
 
 	@textual_header_link_divs.each do |banner_link_div|
@@ -44,7 +43,7 @@ Given(/^i collegamenti non hanno sfondo$/) do
 		background_color = steps_helper.background_color("##{id}", page)
 
 		expect(background_color).to eq('rgba(0, 0, 0, 0)')
-		# todo
+		#expect(banner_link_div[:style]).not_to be_nil
 		#steps_helper.background_color("##{id}", page).should eq(header_rgb_background)
 	end
 end
