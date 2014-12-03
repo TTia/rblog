@@ -1,0 +1,21 @@
+// Place all the styles related to the Posts controller here.
+// They will automatically be included in application.scss.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.page {
+  margin: 1em 15%;
+  border-bottom: 1px solid #BBBBBB;
+
+  overflow: auto;
+  font-family: sans-serif;
+  #author_img {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+  }
+  #abstract_img {
+	float: left;
+	margin-top: 1em;
+	margin-right: 1em;
+  }
+}
