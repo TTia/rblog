@@ -41,8 +41,9 @@ body {
   #header {
 	//background: #2E2F30;
 	background-color: #2E2F30;
-	min-height: 5em;
+	//min-height: 5em;
 	border-top: 5px solid #e84444;
+	overflow: auto;
 
 	#logo {
 	  float: left;
@@ -52,7 +53,7 @@ body {
 	}
 	#header_title {
 	  float: left;
-	  margin-right: 2em;
+	  //margin-right: 1em;
 	  margin-left: 1em;
 
 	  height: 5em;
@@ -81,8 +82,8 @@ body {
 		  text-decoration: none;
 		  font-size: large;
 
-		  margin-left: 1em;
-		  margin-right: 1em;
+		  margin-left: .5em;
+		  margin-right: .5em;
 		}
 		a:hover {
 		  background-color: #8c2828;
